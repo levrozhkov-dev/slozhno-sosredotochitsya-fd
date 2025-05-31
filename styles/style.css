@@ -1,5 +1,4 @@
 .page {
-  padding: var(--page-padding);
   color: var(--text-color, #f1b2ce);
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
@@ -16,10 +15,12 @@
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
   align-items: center;
+  padding-inline: 10px;
+  padding-block: 10px;
 }
 
 .decorated-zone {
-  block-size: max(668px, calc(100vh - var(--page-padding) * 2));
+  block-size: max(100vh);
 }
 
 .decorated-zone::before {
@@ -29,8 +30,8 @@
   border-block-start: 1px solid var(--title-color, #ff0070);
   inline-size: 25px;
   block-size: 25px;
-  inset-block-start: 0;
-  inset-inline-end: 0;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
 }
 
 .decorated-zone::after {
@@ -40,8 +41,8 @@
   border-block-end: 1px solid var(--title-color, #ff0070);
   inline-size: 25px;
   block-size: 25px;
-  inset-block-end: 0;
-  inset-inline-start: 0;
+  inset-block-end: 10px;
+  inset-inline-start: 10px;
 }
 
 .header__rec-element {
@@ -49,8 +50,8 @@
   display: var(--rec-element-display);
   color: var(--accent-color, #ff0070);
   line-height: 25px;
-  inset-block-start: 0;
-  inset-inline-end: 28px;
+  inset-block-start: 10px;
+  inset-inline-end: 38px;
 }
 
 .header__rec-element::after {
@@ -143,12 +144,12 @@
 .content {
   display: grid;
   gap: 50px;
-  padding-block-start: 50px;
-  padding-block-end: 50px;
+  padding-inline: 10px;
+  padding-block: 40px;
   line-height: 23.4px;
 }
 
-.content__section{
+.content__section {
   display: grid;
   gap: 20px;
 }
@@ -159,7 +160,7 @@
   font-size: 18px;
 }
 
-h4.content__subtitle{
+h4.content__subtitle {
   font-weight: normal;
 }
 
@@ -222,12 +223,25 @@ h4.content__subtitle{
 }
 
 @media (width >= 768px) {
-  .page {
-    --page-padding: 20px;
-  }
-
   .header {
     grid-template-columns: 1fr 1fr;
+    padding-inline: 20px;
+    padding-block: 20px;
+  }
+
+  .decorated-zone::before {
+    inset-block-start: 20px;
+    inset-inline-end: 20px;
+  }
+
+  .decorated-zone::after {
+    inset-block-end: 20px;
+    inset-inline-start: 20px;
+  }
+
+  .header__rec-element {
+    inset-block-start: 20px;
+    inset-inline-end: 48px;
   }
 
   .header__theme-menu {
@@ -245,8 +259,8 @@ h4.content__subtitle{
 
   .content {
     gap: 80px;
-    padding-block-start: 80px;
-    padding-block-end: 80px;
+    padding-inline: 20px;
+    padding-block: 60px;
   }
 
   .content__section:nth-child(odd) {
@@ -298,7 +312,7 @@ h4.content__subtitle{
 
 @media (width >= 1024px) {
   .hero-title {
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem); 
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
   .header__theme-menu {
